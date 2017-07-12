@@ -2,9 +2,24 @@
 
 <dom-module id="register-fourth-page">
     <template>
+        <style type="text/css">
+          .tag.selected h3{
+            color: #eb9316
+          }
+        </style>
         <div id="register-form" class="well form-horizontal" hidden="{{!show}}">
 
             <h3>Elige hasta 5 temas que te interesen</h3>
+
+            <template is="dom-repeat" items="{{topics}}">
+              <div class="col-md-4">
+                <div class="thumbnail tag" on-click="selectTag">
+                  <div class="caption">
+                    <h3>{{item}}</h3>
+                  </div>
+                </div>
+              </div>
+            </template>
 
             <div class="form-group">
               <label class="col-md-4 control-label"></label>
@@ -29,7 +44,54 @@
                 disabled: {
                     type: Boolean,
                     value: false
+                },
+
+                selectedTags: {
+                    type: Array,
+                    value: []
+                },
+
+                topics: {
+                    type: Array,
+                    value: [
+                      'Bolsa',
+                      'Trading',
+                      'Forex',
+                      'Fondos',
+                      'Préstamos',
+                      'Indices',
+                      'Banca',
+                      'Depósitos',
+                      'Hipotecas',
+                    ]
                 }
+            },
+
+            selectTag: function(event){
+              tag = event.model._nodes[1]
+              tagText = tag.innerText.replace(/\s/g,'')
+              if(!this.selectedTags.includes(tagText) && this.selectedTags.length < 5){
+                this.styleSelectedTag(tag)
+                this.selectedTags.push(tagText)
+              }else{
+                this.unStyleSelectedTag(tag)
+                this.removeTag(tagText)
+              }
+            },
+
+            removeTag: function(tag) {
+              var index = this.selectedTags.indexOf(tag)
+              if(index != -1) {
+                this.selectedTags.splice(index, 1)
+              }
+            },
+
+            styleSelectedTag: function(tag) {
+                tag.classList.add('selected');
+            },
+
+            unStyleSelectedTag: function(tag) {
+                tag.classList.remove('selected');
             },
 
             nextPage: function() {

@@ -21,6 +21,12 @@ module Fixture
         page.go_next
         page
       end
+
+      def fourth_page
+        page = third_page
+        page.go_next
+        page
+      end
     end
   end
 end

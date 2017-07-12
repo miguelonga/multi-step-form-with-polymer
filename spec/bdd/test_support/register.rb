@@ -24,6 +24,24 @@ module Page
       find('.next-page').click
     end
 
+    def select_tag
+      first('.tag').click
+    end
+
+    def has_selected_tag?
+      has_css?('.tag.selected')
+    end
+
+    def select_maximum_tags
+      all('.tag').each_with_index do |tag, index|
+        tag.click if index < 5
+      end
+    end
+
+    def has_maximum_selected_tags?
+      all('.tag.selected').length == 5
+    end
+
     private
 
     def validate!

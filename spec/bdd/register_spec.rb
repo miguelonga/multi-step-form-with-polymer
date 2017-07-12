@@ -67,4 +67,13 @@ feature 'Register' do
       expect(page.has_title?(next_step_title)).to be true
     end
   end
+
+  context 'fourth page' do
+    scenario 'has maximum selectable tags' do
+      maximum_selectable_tags = 5
+      page = Fixture::Register.fourth_page
+      page.select_maximum_tags
+      expect(page.has_maximum_selected_tags?).to be true
+    end
+  end
 end
