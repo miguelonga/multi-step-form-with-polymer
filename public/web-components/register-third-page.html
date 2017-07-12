@@ -9,9 +9,9 @@
             <div class="form-group">
               <label class="col-md-4 control-label">Pais</label>
               <div class="col-md-4 inputGroupContainer">
-              <div class="input-group">
-              <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-              <input name="country" value="{{country::input}}" placeholder="País de origen" class="form-control" type="text">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                  <input name="country" value="{{country::input}}" placeholder="País de origen" class="form-control" type="text">
                 </div>
               </div>
             </div>
@@ -19,9 +19,9 @@
             <div class="form-group">
               <label class="col-md-4 control-label">C.P</label>
               <div class="col-md-4 inputGroupContainer">
-              <div class="input-group">
-              <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-              <input name="zipcode" value="{{zipcode::input}}" placeholder="Código postal" class="form-control" type="text">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                  <input name="zipcode" value="{{zipcode::input}}" placeholder="Código postal" class="form-control" type="text">
                 </div>
               </div>
             </div>
@@ -29,12 +29,26 @@
             <div class="form-group">
               <label class="col-md-4 control-label">Teléfono</label>
               <div class="col-md-4 inputGroupContainer">
-              <div class="input-group">
-              <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-              <input name="phone" value="{{phone::input}}" placeholder="Teléfono" class="form-control" type="text">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                  <input name="phone" value="{{phone::input}}" placeholder="Teléfono" class="form-control" type="text">
                 </div>
               </div>
             </div>
+
+            <div class="form-group">
+              <label class="col-md-4 control-label">Edad</label>
+              <div class="col-md-4 inputGroupContainer">
+                <div class="input-group col-md-10 pull-right">
+                  <input type="range" id="myRange" value="{{age::input}}">
+                </div>
+                <div class="input-group col-md-2">
+                  <span class="input-group-addon">{{age}}</span>
+                </div>
+              </div>
+            </div>
+
+
 
             <div class="form-group">
               <label class="col-md-4 control-label"></label>
@@ -54,6 +68,11 @@
                 show: {
                     type: Boolean,
                     value: false
+                },
+
+                age: {
+                    type: Number,
+                    value: 18
                 },
 
                 disabled: {
