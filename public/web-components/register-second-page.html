@@ -48,12 +48,14 @@
 
                 name: {
                     type: String,
-                    observer: 'validateName'
+                    observer: 'validateName',
+                    value: ''
                 },
 
                 password: {
                     type: String,
-                    observer: 'validatePassword'
+                    observer: 'validatePassword',
+                    value: ''
                 },
 
                 disabled: {
@@ -63,13 +65,16 @@
             },
 
             validateName: function() {
-                if(this.name.length > 0){
-                    this.disabled = false
-                }
+                this.allowNextPage()
             },
 
-            validateName: function() {
-                if(this.password.length > 0){
+            validatePassword: function() {
+                this.allowNextPage()
+            },
+
+            allowNextPage: function() {
+                this.disabled = true
+                if(this.name.length > 0 && this.password.length > 0){
                     this.disabled = false
                 }
             },

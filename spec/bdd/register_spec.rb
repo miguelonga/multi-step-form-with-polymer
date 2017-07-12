@@ -1,5 +1,6 @@
 require 'spec_helper_bdd'
 require_relative 'test_support/register'
+require_relative 'test_support/fixture-register'
 require_relative '../../app'
 
 feature 'Register' do
@@ -24,6 +25,20 @@ feature 'Register' do
       page.go_next
 
       expect(page.has_title?(next_step_title)).to eq true
+    end
+  end
+
+  context 'second page' do
+    scenario 'allows next when required fields filled' do
+      page = Fixture::Register.second_page
+
+      expect(page.has_title?("Elige tus datos de usuario")).to eq true
+      expect(page.next_button_disabled?).to be true
+
+      page.fill('name', 'username')
+      page.fill('password', 'secretpassword')
+
+      expect(page.next_button_disabled?).to be false
     end
   end
 end
