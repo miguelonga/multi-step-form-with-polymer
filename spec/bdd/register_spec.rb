@@ -17,7 +17,7 @@ feature 'Register' do
       expect(page.next_button_disabled?).to be false
     end
 
-    scenario 'allows next when required fields filled' do
+    scenario 'goes to second page' do
       next_step_title = "Elige tus datos de usuario"
       page = Page::Register.new
 
@@ -39,6 +39,17 @@ feature 'Register' do
       page.fill('password', 'secretpassword')
 
       expect(page.next_button_disabled?).to be false
+    end
+
+    scenario 'goes to third page' do
+      next_step_title = "Completa tu perfil"
+      page = Fixture::Register.second_page
+
+      page.fill('name', 'Name')
+      page.fill('password', 'secretpassword')
+      page.go_next
+
+      expect(page.has_title?(next_step_title)).to eq true
     end
   end
 end

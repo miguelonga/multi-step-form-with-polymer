@@ -1,0 +1,71 @@
+<link rel="import" href="/vendor/polymer/polymer.html">
+
+<dom-module id="register-third-page">
+    <template>
+        <div id="register-form" class="well form-horizontal" hidden="{{!show}}">
+
+            <h3>Completa tu perfil</h3>
+
+            <div class="form-group">
+              <label class="col-md-4 control-label">Pais</label>
+              <div class="col-md-4 inputGroupContainer">
+              <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+              <input name="country" value="{{country::input}}" placeholder="País de origen" class="form-control" type="text">
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-4 control-label">C.P</label>
+              <div class="col-md-4 inputGroupContainer">
+              <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+              <input name="zipcode" value="{{zipcode::input}}" placeholder="Código postal" class="form-control" type="text">
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-4 control-label">Teléfono</label>
+              <div class="col-md-4 inputGroupContainer">
+              <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+              <input name="phone" value="{{phone::input}}" placeholder="Teléfono" class="form-control" type="text">
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-4 control-label"></label>
+              <div class="col-md-4 right">
+                <button class="btn btn-warning next-page pull-right" disabled$="{{disabled}}" on-click="nextPage">Next <span class="glyphicon glyphicon-send"></span></button>
+              </div>
+            </div>
+
+        </div>
+    </template>
+
+    <script>
+        Polymer({
+            is: 'register-third-page',
+
+            properties: {
+                show: {
+                    type: Boolean,
+                    value: false
+                },
+
+                disabled: {
+                    type: Boolean,
+                    value: false
+                }
+            },
+
+            nextPage: function() {
+                var pageIndex = 2
+                this.fire('nextPage', pageIndex)
+            }
+        });
+    </script>
+</dom-module>

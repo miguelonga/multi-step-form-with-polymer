@@ -7,12 +7,13 @@ Class('Register.Form', {
         this.element.addEventListener('nextPage', this.nextPage.bind(this))
         this.firstPage = document.getElementById('first-page')
         this.secondPage = document.getElementById('second-page')
+        this.thirdPage = document.getElementById('third-page')
     },
 
     nextPage: function(event) {
       var pageIndex = event.detail
       var nextPageIndex = pageIndex + 1
-      var pages = [this.firstPage, this.secondPage]
+      var pages = [this.firstPage, this.secondPage, this.thirdPage]
 
       pages[pageIndex].show = false
       pages[nextPageIndex].show = true
