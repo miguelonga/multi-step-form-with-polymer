@@ -1,0 +1,53 @@
+<link rel="import" href="/vendor/polymer/polymer.html">
+
+<dom-module id="register-first-page">
+    <template>
+        <form id="register-form" class="well form-horizontal">
+            <h3>Regístrate</h3>
+            <div class="form-group">
+              <label class="col-md-4 control-label">Mail</label>
+              <div class="col-md-4 inputGroupContainer">
+              <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+              <input name="mail" value="{{mail::input}}" placeholder="name@email.com" class="form-control" type="text">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-4 control-label"></label>
+              <div class="col-md-4 right">
+                <button class="btn btn-warning next-page pull-right" disabled$="{{disabled}}" on-click="nextPage">Next <span class="glyphicon glyphicon-send"></span></button>
+              </div>
+            </div>
+        </form>
+    </template>
+
+    <script>
+        Polymer({
+            is: 'register-first-page',
+
+            properties: {
+                mail: {
+                    type: String,
+                    observer: 'validateMail'
+                },
+
+                disabled: {
+                    type: Boolean,
+                    value: true
+                }
+            },
+
+            validateMail: function() {
+                if(this.mail.length > 0){
+                    this.disabled = false
+                }
+            },
+
+            nextPage: function() {
+                var pageIndex = 0
+                this.fire('nextPage', pageIndex)
+            }
+        });
+    </script>
+</dom-module>
