@@ -1,0 +1,41 @@
+<link rel="import" href="/vendor/polymer/polymer.html">
+
+<dom-module id="register-fourth-page">
+    <template>
+        <div id="register-form" class="well form-horizontal" hidden="{{!show}}">
+
+            <h3>Elige hasta 5 temas que te interesen</h3>
+
+            <div class="form-group">
+              <label class="col-md-4 control-label"></label>
+              <div class="col-md-4 right">
+                <button class="btn btn-warning next-page pull-right" disabled$="{{disabled}}" on-click="nextPage">Finish <span class="glyphicon glyphicon-send"></span></button>
+              </div>
+            </div>
+
+        </div>
+    </template>
+
+    <script>
+        Polymer({
+            is: 'register-fourth-page',
+
+            properties: {
+                show: {
+                    type: Boolean,
+                    value: false
+                },
+
+                disabled: {
+                    type: Boolean,
+                    value: false
+                }
+            },
+
+            nextPage: function() {
+                var pageIndex = 3
+                this.fire('nextPage', pageIndex)
+            }
+        });
+    </script>
+</dom-module>

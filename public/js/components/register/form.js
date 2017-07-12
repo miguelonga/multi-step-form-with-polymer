@@ -8,12 +8,13 @@ Class('Register.Form', {
         this.firstPage = document.getElementById('first-page')
         this.secondPage = document.getElementById('second-page')
         this.thirdPage = document.getElementById('third-page')
+        this.fourthPage = document.getElementById('fourth-page')
     },
 
     nextPage: function(event) {
       var pageIndex = event.detail
       var nextPageIndex = pageIndex + 1
-      var pages = [this.firstPage, this.secondPage, this.thirdPage]
+      var pages = [this.firstPage, this.secondPage, this.thirdPage, this.fourthPage]
 
       pages[pageIndex].show = false
       pages[nextPageIndex].show = true

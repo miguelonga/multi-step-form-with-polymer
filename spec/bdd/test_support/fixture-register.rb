@@ -13,6 +13,14 @@ module Fixture
         page.go_next
         page
       end
+
+      def third_page
+        page = second_page
+        page.fill('name', 'Name')
+        page.fill('password', 'secretpassword')
+        page.go_next
+        page
+      end
     end
   end
 end

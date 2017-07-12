@@ -52,4 +52,19 @@ feature 'Register' do
       expect(page.has_title?(next_step_title)).to eq true
     end
   end
+
+  context 'third page' do
+    scenario 'goes to fourth page' do
+      next_step_title = "Elige hasta 5 temas que te interesen"
+
+      page = Fixture::Register.third_page
+
+      expect(page.has_title?("Completa tu perfil")).to eq true
+      expect(page.next_button_disabled?).to be false
+
+      page.go_next
+
+      expect(page.has_title?(next_step_title)).to be true
+    end
+  end
 end
