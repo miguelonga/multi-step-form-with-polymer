@@ -76,4 +76,13 @@ feature 'Register' do
       expect(page.has_maximum_selected_tags?).to be true
     end
   end
+
+  context 'view' do
+    scenario 'has all filled information', :wip do
+      page = Fixture::Register.view
+
+      expect(has_content?(Fixture::Register::EMAIL)).to be true
+      expect(has_content?(Fixture::Register::NAME)).to be true
+    end
+  end
 end
